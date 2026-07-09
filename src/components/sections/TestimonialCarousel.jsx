@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { gsap, useGSAP } from "../../lib/gsap";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
 import SectionLabel from "../ui/SectionLabel";
+import PremiumCTA from "../ui/PremiumCTA";
 
 function usePerView() {
   const [perView, setPerView] = useState(1);
@@ -18,7 +19,7 @@ function usePerView() {
   return perView;
 }
 
-export default function TestimonialCarousel({ data, ui = {} }) {
+export default function TestimonialCarousel({ data, ui = {}, cta }) {
   const ref = useRef(null);
   const reducedMotion = useReducedMotion();
   const perView = usePerView();
@@ -150,9 +151,20 @@ export default function TestimonialCarousel({ data, ui = {} }) {
                     {item.quote}
                   </p>
                   <div className="mt-6 border-t border-[var(--line)] pt-4">
-                    <p className="font-heading text-sm font-bold uppercase tracking-[0.1em] text-white">
-                      {item.name}
-                    </p>
+                    <div className="flex items-center justify-between gap-3">
+                      <p className="font-heading text-sm font-bold uppercase tracking-[0.1em] text-white">
+                        {item.name}
+                      </p>
+                      <div className="flex items-center gap-0.5" aria-label="Calificacion 5 de 5">
+                        {Array.from({ length: 5 }).map((_, starIndex) => (
+                          <Star
+                            key={starIndex}
+                            className="h-3.5 w-3.5 fill-[#f6c453] text-[#f6c453]"
+                            aria-hidden="true"
+                          />
+                        ))}
+                      </div>
+                    </div>
                     <p className="mt-1 text-[0.64rem] uppercase tracking-[0.2em] text-[var(--muted)]">
                       {item.role}
                     </p>
@@ -197,6 +209,12 @@ export default function TestimonialCarousel({ data, ui = {} }) {
             <ChevronRight className="h-4 w-4" />
           </button>
         </div>
+
+        {cta ? (
+          <div className="mt-12 px-5">
+            <PremiumCTA href={cta.href} label={cta.primaryLabel} ariaLabel={cta.ariaLabel} size="lg" />
+          </div>
+        ) : null}
       </div>
     </section>
   );

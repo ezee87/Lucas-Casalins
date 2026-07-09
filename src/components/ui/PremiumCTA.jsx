@@ -59,7 +59,7 @@ export default function PremiumCTA({
       href={href}
       onClick={onClick}
       aria-label={ariaLabel || label}
-      className={`premium-cta cta-shimmer group inline-flex shrink-0 items-center justify-center gap-3 whitespace-nowrap font-heading font-bold uppercase tracking-[0.14em] text-white ${SIZES[size] || SIZES.md} ${className}`}
+      className={`premium-cta cta-shimmer group inline-flex w-full max-w-[300px] shrink-0 items-center justify-center gap-3 whitespace-nowrap font-heading font-bold uppercase tracking-[0.14em] text-white md:w-auto md:max-w-none ${SIZES[size] || SIZES.md} ${className}`}
     >
       {/* Smoke / energy inner glow — always rendered, CSS animates it */}
       <span className="cta-smoke" aria-hidden="true" />
