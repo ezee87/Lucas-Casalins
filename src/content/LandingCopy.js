@@ -58,10 +58,10 @@ export const landingCopy = {
     text: "ÚLTIMOS CUPOS DISPONIBLES",
   },
   hero: {
-    eyebrow: "Programa para profesionales y dueños de negocio.",
+    eyebrow: "Programa para profesionales y dueños de negocio",
     title: "CÓMO BAJAR +15 kg DE GRASA CORPORAL en sólo 90 DÍAS",
     subtitle:
-      "El método que ayudó a más de 2.500 personas en 10 países diferentes a verse mejor, sentirse más seguras y rendir con más energía en su vida personal y profesional.",
+      "El método que ayudó a más de 2.500 personas en 10 países diferentes a verse mejor, sentirse más seguros y rendir con más energía en su vida personal y profesional.",
     supportText:
       "Sin pasar hambre con dietas extremas ni rutinas eternas en el gimnasio.",
     logo: "/assets/brand/logo.webp",
@@ -96,7 +96,7 @@ export const landingCopy = {
     eyebrow: "TESTIMONIOS",
     title: "ALGUNOS DE NUESTROS CASOS DE ÉXITO",
     subtitle:
-      "Resultados reales de profesionales, empresarios y atletas que confiaron en el método ARETÉ.",
+      "Resultados de profesionales y empresarios que confiaron en el método ARETÉ.",
     items: testimonialCases,
   },
   testimonials: {
@@ -104,7 +104,7 @@ export const landingCopy = {
     eyebrow: "EN SUS PALABRAS",
     title: "Lo que dicen quienes ya transformaron su cuerpo",
     subtitle:
-      "Historias reales de personas que aplicaron el sistema y recuperaron su físico, su energía y su confianza.",
+      "Historias de personas que aplicaron el sistema y recuperaron su físico, su energía y su confianza.",
     items: [
       {
         quote:

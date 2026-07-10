@@ -1,8 +1,16 @@
 import { useRef } from "react";
 import { gsap, useGSAP } from "../../lib/gsap";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
+import { useIsMobile } from "../../hooks/useIsMobile";
 import PremiumCTA from "../ui/PremiumCTA";
 import SectionLabel from "../ui/SectionLabel";
+
+const mobileAboutBullets = [
+  "Mi nombre es Lucas Casalins, soy Profesor de Educación Física, Licenciado en Alto Rendimiento Deportivo y atleta con más de 20 torneos regionales.",
+  "Me formé con más de 65 certificaciones nacionales e internacionales en nutrición, entrenamiento y biomecánica, y soy parte de la cátedra de Biomecánica en la Facultad de Educación Física, lo que me permite unir la ciencia con la práctica real.",
+  "Con mi método ayudé a más de 2.500 personas en 10 países a transformar su cuerpo, recuperar energía y volver a sentirse seguras consigo mismas.",
+  "Sé lo que es mirarte al espejo y no gustarte, sentir que no tenés tiempo o frustrarte porque nada funciona. Lo viví en carne propia. Y por eso mi estilo es claro: no vendo humo, no prometo atajos ni resultados mágicos.",
+];
 
 /**
  * AboutLucas — UNIFIED layout for both variants A and B.
@@ -15,6 +23,8 @@ import SectionLabel from "../ui/SectionLabel";
 export default function AboutLucas({ data, cta }) {
   const ref = useRef(null);
   const reducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
+  const aboutBullets = isMobile ? mobileAboutBullets : data.bullets;
 
   useGSAP(
     () => {
@@ -104,7 +114,7 @@ export default function AboutLucas({ data, cta }) {
           {/* ── Left: image (no scroll parallax) ── */}
           <div data-about-img="true" className="hidden md:block">
             <div
-              className="relative w-full overflow-hidden rounded-2xl aspect-[16/10] max-h-[240px] min-h-0 lg:aspect-auto lg:h-[clamp(460px,46vw,620px)] lg:min-h-[440px] lg:max-h-[620px]"
+              className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-2xl aspect-[4/3] max-h-[300px] min-h-0 md:aspect-[16/10] md:max-h-[240px] md:max-w-none lg:aspect-auto lg:h-[clamp(460px,46vw,620px)] lg:min-h-[440px] lg:max-h-[620px]"
               style={{
                 border: "1.5px solid rgba(255,30,30,0.45)",
                 boxShadow:
@@ -133,7 +143,7 @@ export default function AboutLucas({ data, cta }) {
           {/* ── Right: editorial text ── */}
           <div data-about-text className="flex flex-col justify-center gap-[clamp(18px,2vw,28px)]">
             <div className="space-y-0">
-              {data.bullets.map((bullet, idx) => (
+              {aboutBullets.map((bullet, idx) => (
                 <div key={idx} data-about-block="true">
                   {idx > 0 ? (
                     <div
@@ -180,6 +190,33 @@ export default function AboutLucas({ data, cta }) {
             <p className="w-full text-[1.02rem] font-semibold leading-relaxed text-[var(--red-bright)] md:text-[1.14rem]">
               {data.finalStatement}
             </p>
+          </div>
+          <div data-about-img="true" className="mt-8 block md:hidden">
+            <div
+              className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-2xl aspect-[4/3] max-h-[300px] min-h-0"
+              style={{
+                border: "1.5px solid rgba(255,30,30,0.45)",
+                boxShadow:
+                  "0 0 0 1px rgba(255,30,30,0.08), 0 0 48px rgba(255,30,30,0.20), 0 24px 64px rgba(0,0,0,0.65)",
+              }}
+            >
+              <img
+                src={data.image}
+                alt="Lucas Casalins"
+                className="h-full w-full scale-[1.03] object-cover object-[center_26%]"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+              <div
+                aria-hidden="true"
+                className="absolute bottom-0 inset-x-0 h-20"
+                style={{
+                  background:
+                    "linear-gradient(0deg, rgba(255,30,30,0.22), transparent)",
+                }}
+              />
+            </div>
           </div>
           <div className="mt-8">
             <PremiumCTA

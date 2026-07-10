@@ -25,12 +25,6 @@ export default function BookingSection({ data }) {
           {data.title}
         </h2>
 
-        {data.subtitle ? (
-          <p className="mt-4 max-w-2xl text-[0.95rem] leading-relaxed text-[var(--muted)] md:text-[1rem]">
-            {data.subtitle}
-          </p>
-        ) : null}
-
         {/* Duration pill */}
         <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-[var(--line-warm)] bg-[rgba(255,30,30,0.06)] px-4 py-1.5 text-[0.68rem] uppercase tracking-[0.22em] text-[var(--text)]">
           <span className="h-1.5 w-1.5 rounded-full bg-[var(--red)] shadow-[0_0_10px_rgba(255,30,30,0.8)]" />
@@ -49,15 +43,15 @@ export default function BookingSection({ data }) {
           <div className="bg-dots-red pointer-events-none absolute inset-0 opacity-30" />
           <div
             id="booking-embed"
-            className="relative overflow-hidden rounded-[1.2rem] border border-[var(--line)] bg-[var(--surface)]"
+            className="relative max-h-[78vh] overflow-y-auto rounded-[1.2rem] border border-[var(--line)] bg-[var(--surface)]"
           >
             <iframe
               src={data.calendarEmbedUrl}
               id={data.calendarEmbedId}
               title={data.title}
               style={{ width: "100%", border: "none", overflow: "hidden" }}
-              scrolling="no"
-              className="min-h-[700px] w-full"
+              scrolling="yes"
+              className="h-[980px] w-full md:h-[1080px]"
               onLoad={() => ScrollTrigger.refresh()}
             />
           </div>

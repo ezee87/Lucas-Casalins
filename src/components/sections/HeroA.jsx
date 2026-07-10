@@ -31,9 +31,31 @@ function splitTitle(title) {
   return [words.slice(0, bestIdx).join(" "), words.slice(bestIdx).join(" ")];
 }
 
+const HERO_SUBTITLE_HIGHLIGHT_A = "ayudó a más de 2.500 personas";
+const HERO_SUBTITLE_HIGHLIGHT_B = "a verse mejor, sentirse más seguros y rendir con más energía";
+
+function renderHighlightedSubtitle(text) {
+  const [beforeFirst, restAfterFirst] = text.split(HERO_SUBTITLE_HIGHLIGHT_A);
+  if (restAfterFirst === undefined) return text;
+
+  const [betweenHighlights, afterSecond] = restAfterFirst.split(HERO_SUBTITLE_HIGHLIGHT_B);
+  if (afterSecond === undefined) return text;
+
+  return (
+    <>
+      {beforeFirst}
+      <strong className="font-bold text-white">{HERO_SUBTITLE_HIGHLIGHT_A}</strong>
+      {betweenHighlights}
+      <strong className="font-bold text-white">{HERO_SUBTITLE_HIGHLIGHT_B}</strong>
+      {afterSecond}
+    </>
+  );
+}
+
 export default function HeroA({ data, cta, header }) {
   const ref = useRef(null);
   const reducedMotion = useReducedMotion();
+  const disableHeroMotion = true;
   const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
@@ -45,6 +67,8 @@ export default function HeroA({ data, cta, header }) {
     (context, contextSafe) => {
       const heroEl = ref.current;
       if (!heroEl) return;
+
+      if (disableHeroMotion) return;
 
       const clampX = gsap.utils.clamp(8, 92);
       const clampY = gsap.utils.clamp(10, 86);
@@ -318,15 +342,15 @@ export default function HeroA({ data, cta, header }) {
         {/* Subheadline */}
         <p
           data-h="sub"
-          className="mx-auto mt-6 max-w-[640px] text-balance text-[0.98rem] font-normal leading-[1.65] text-[rgba(255,244,234,0.82)] md:text-[1.06rem]"
+          className="mx-auto mt-6 max-w-[640px] text-balance text-[0.98rem] font-normal leading-[1.65] text-[rgba(255,244,234,0.82)] md:max-w-[960px] md:text-[1.06rem]"
         >
-          {data.subtitle}
+          {renderHighlightedSubtitle(data.subtitle)}
         </p>
 
         {/* Support text */}
         <p
           data-h="sup"
-          className="mx-auto mt-4 max-w-[580px] text-[0.88rem] font-semibold leading-[1.5] text-[var(--red-bright)] md:text-[0.95rem]"
+          className="mx-auto mt-4 max-w-[320px] text-balance text-[0.88rem] font-semibold leading-[1.5] text-[var(--red-bright)] md:max-w-[580px] md:text-[0.95rem]"
         >
           {data.supportText}
         </p>
@@ -339,9 +363,9 @@ export default function HeroA({ data, cta, header }) {
           <div
             className="relative overflow-hidden rounded-3xl bg-[#050202]"
             style={{
-              border: "1px solid rgba(255,30,30,0.45)",
+              border: "1px solid rgba(255,30,30,0.55)",
               boxShadow:
-                "0 0 0 1px rgba(255,30,30,0.1), 0 0 36px rgba(255,30,30,0.2), 0 16px 52px rgba(0,0,0,0.72)",
+                "0 0 0 1px rgba(255,30,30,0.12), 0 0 40px rgba(255,30,30,0.28), 0 0 80px rgba(255,30,30,0.12), 0 24px 64px rgba(0,0,0,0.84)",
             }}
           >
             <div className="relative aspect-video">
@@ -357,6 +381,7 @@ export default function HeroA({ data, cta, header }) {
                 />
               ) : (
                 <>
+                  {/* Poster image — object-contain shows the full image without cropping */}
                   <img
                     src={data.video.poster}
                     alt={data.video.posterAlt || data.title}
@@ -365,11 +390,13 @@ export default function HeroA({ data, cta, header }) {
                     decoding="async"
                     onLoad={() => ScrollTrigger.refresh()}
                   />
-                  {/* Vignette overlays */}
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.06)_0%,rgba(0,0,0,0.12)_44%,rgba(0,0,0,0.56)_100%)]" />
-                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_68%,rgba(255,30,30,0.12),transparent_56%)]" />
-                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.34),rgba(0,0,0,0.08)_32%,rgba(0,0,0,0.44)_100%)]" />
-                  <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.17] mix-blend-soft-light" />
+
+                  {/* Red/black vignette with subtle grain */}
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.04)_0%,rgba(0,0,0,0.18)_50%,rgba(0,0,0,0.62)_100%)]" />
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_80%,rgba(255,30,30,0.18),transparent_60%)]" />
+                  <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.28)_0%,rgba(0,0,0,0.04)_28%,rgba(0,0,0,0.52)_100%)]" />
+                  <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.15] mix-blend-soft-light" />
+
                   {/* Play button — outlined red, no fill */}
                   <button
                     type="button"
@@ -377,11 +404,11 @@ export default function HeroA({ data, cta, header }) {
                     aria-label="Reproducir video"
                     className="group absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2"
                   >
-                    <span className="pointer-events-none absolute inset-[-16px] scale-95 rounded-full border border-[var(--accent)] opacity-30 transition-all duration-500 group-hover:scale-110 group-hover:opacity-55" />
-                    <span className="flex h-[72px] w-[72px] items-center justify-center rounded-full border-2 border-[var(--red-bright)] bg-transparent transition-all duration-300 group-hover:scale-[1.04] group-hover:shadow-[0_0_34px_rgba(255,30,30,0.52)] md:h-[90px] md:w-[90px]">
+                    <span className="pointer-events-none absolute inset-[-18px] scale-95 rounded-full border border-[var(--accent)] opacity-28 transition-all duration-500 group-hover:scale-110 group-hover:opacity-50" />
+                    <span className="flex h-[68px] w-[68px] items-center justify-center rounded-full border-2 border-[var(--red-bright)] bg-transparent transition-all duration-300 group-hover:scale-[1.05] group-hover:shadow-[0_0_36px_rgba(255,30,30,0.56)] md:h-[80px] md:w-[80px]">
                       <svg
-                        width="22"
-                        height="26"
+                        width="20"
+                        height="24"
                         viewBox="0 0 18 22"
                         fill="none"
                         className="translate-x-[2px]"
@@ -396,6 +423,24 @@ export default function HeroA({ data, cta, header }) {
                       </svg>
                     </span>
                   </button>
+
+                  {/* Subtle corner glow accents */}
+                  <div
+                    className="pointer-events-none absolute -bottom-4 -right-4 h-24 w-24 rounded-full"
+                    style={{
+                      background:
+                        "radial-gradient(circle, rgba(255,30,30,0.35), transparent 70%)",
+                      filter: "blur(16px)",
+                    }}
+                  />
+                  <div
+                    className="pointer-events-none absolute -left-4 -top-4 h-20 w-20 rounded-full"
+                    style={{
+                      background:
+                        "radial-gradient(circle, rgba(255,30,30,0.2), transparent 70%)",
+                      filter: "blur(14px)",
+                    }}
+                  />
                 </>
               )}
             </div>

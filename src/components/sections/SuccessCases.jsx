@@ -77,7 +77,7 @@ export default function SuccessCases({ data, cta }) {
             {data.title}
           </h2>
           {data.subtitle ? (
-            <p className="mt-4 max-w-2xl text-balance text-base leading-relaxed text-[var(--muted)] md:text-lg">
+            <p className="mt-4 max-w-2xl text-balance text-base leading-relaxed text-[var(--muted)] md:text-lg lg:max-w-none lg:whitespace-nowrap">
               {data.subtitle}
             </p>
           ) : null}

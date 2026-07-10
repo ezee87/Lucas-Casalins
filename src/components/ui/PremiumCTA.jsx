@@ -6,7 +6,7 @@ import { useReducedMotion } from "../../hooks/useReducedMotion";
 const SIZES = {
   sm: "h-[44px] px-6 text-[0.7rem]",
   md: "h-[60px] min-w-[260px] px-9 text-[0.8rem]",
-  lg: "h-[64px] min-w-[300px] px-10 text-[0.84rem] md:min-w-[320px] md:text-[0.9rem]",
+  lg: "h-[64px] min-w-[300px] px-10 text-[0.84rem] md:min-w-[320px] md:text-[1.3rem]",
 };
 
 // NOTE: border-radius is controlled via .premium-cta CSS (0.75rem / rounded-xl).
@@ -63,8 +63,12 @@ export default function PremiumCTA({
     >
       {/* Smoke / energy inner glow — always rendered, CSS animates it */}
       <span className="cta-smoke" aria-hidden="true" />
-      <span className="relative z-[2]">{label}</span>
-      <span className="relative z-[2] inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition-all duration-300 group-hover:bg-white/25">
+      <span
+        className="premium-cta-side premium-cta-side--ghost relative z-[2] inline-flex h-7 w-7 items-center justify-center rounded-full"
+        aria-hidden="true"
+      />
+      <span className="premium-cta-label relative z-[2] text-center">{label}</span>
+      <span className="premium-cta-side relative z-[2] inline-flex h-7 w-7 items-center justify-center rounded-full bg-white/15 transition-all duration-300 group-hover:bg-white/25">
         <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-[3px]" />
       </span>
     </a>

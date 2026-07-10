@@ -557,16 +557,16 @@ body {
     overflow: visible;
   }
 
-  #hero [data-h='cta'],
+  #hero [data-h='cta'] {
+    position: relative;
+    margin-top: 56px;
+    margin-bottom: 36px;
+  }
+
   #hero [data-hb='cta'] {
     position: relative;
     margin-top: 24px;
     margin-bottom: 36px;
-  }
-
-  #hero [data-h='ey'],
-  #hero [data-hb='ey'] {
-    display: none !important;
   }
 
   .premium-cta {
@@ -575,6 +575,28 @@ body {
     margin-right: auto !important;
     align-self: center !important;
     justify-content: center;
+    width: min(100%, 300px) !important;
+    min-width: 0 !important;
+    padding-left: 0.9rem !important;
+    padding-right: 0.9rem !important;
+  }
+
+  .premium-cta .premium-cta-label {
+    flex: 1 1 auto;
+    text-align: center;
+    font-size: 1.3rem;
+    line-height: 1;
+    letter-spacing: 0.14em;
+  }
+  .premium-cta .premium-cta-side {
+    width: 1.8rem;
+    height: 1.8rem;
+    flex: 0 0 1.8rem;
+  }
+
+  .premium-cta .premium-cta-side--ghost {
+    opacity: 0;
+    pointer-events: none;
   }
 
   #cases .premium-cta,
@@ -587,7 +609,70 @@ body {
   #faq .premium-cta,
   #final-cta .premium-cta {
     position: relative;
+    width: min(100%, 300px);
+    min-width: 0;
+    letter-spacing: 0.16em;
   }
+
+  #booking,
+  #cases,
+  #testimonials,
+  #about,
+  #faq {
+    text-align: center;
+  }
+
+  #booking h2,
+  #booking p,
+  #cases h2,
+  #cases p,
+  #testimonials h2,
+  #testimonials p,
+  #about h2,
+  #about p,
+  #faq h2,
+  #faq p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #booking .inline-flex,
+  #cases .inline-flex,
+  #testimonials .inline-flex,
+  #about .inline-flex,
+  #faq .inline-flex {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #hero h1,
+  #booking h2,
+  #cases h2,
+  #testimonials h2 {
+    line-height: 1.12 !important;
+  }
+
+  #about [data-about-text] {
+    align-items: center;
+  }
+
+  #about [data-about-block] > div {
+    justify-content: center;
+    text-align: center;
+  }
+
+  #faq [data-faq-shell] button,
+  #faq [data-faq-shell] p {
+    text-align: left !important;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+#hero,
+#hero * {
+  animation: none !important;
+  transition: none !important;
 }
 
 .thankyou-cases-grid {

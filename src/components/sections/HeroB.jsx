@@ -30,9 +30,31 @@ function splitTitle(title) {
   return [words.slice(0, bestIdx).join(" "), words.slice(bestIdx).join(" ")];
 }
 
+const HERO_SUBTITLE_HIGHLIGHT_A = "ayudó a más de 2.500 personas";
+const HERO_SUBTITLE_HIGHLIGHT_B = "a verse mejor, sentirse más seguros y rendir con más energía";
+
+function renderHighlightedSubtitle(text) {
+  const [beforeFirst, restAfterFirst] = text.split(HERO_SUBTITLE_HIGHLIGHT_A);
+  if (restAfterFirst === undefined) return text;
+
+  const [betweenHighlights, afterSecond] = restAfterFirst.split(HERO_SUBTITLE_HIGHLIGHT_B);
+  if (afterSecond === undefined) return text;
+
+  return (
+    <>
+      {beforeFirst}
+      <strong className="font-bold text-white">{HERO_SUBTITLE_HIGHLIGHT_A}</strong>
+      {betweenHighlights}
+      <strong className="font-bold text-white">{HERO_SUBTITLE_HIGHLIGHT_B}</strong>
+      {afterSecond}
+    </>
+  );
+}
+
 export default function HeroB({ data, cta, header }) {
   const ref = useRef(null);
   const reducedMotion = useReducedMotion();
+  const disableHeroMotion = true;
   const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
@@ -44,6 +66,8 @@ export default function HeroB({ data, cta, header }) {
     (context, contextSafe) => {
       const heroEl = ref.current;
       if (!heroEl) return;
+
+      if (disableHeroMotion) return;
 
       const clampX = gsap.utils.clamp(8, 92);
       const clampY = gsap.utils.clamp(10, 86);
@@ -306,15 +330,15 @@ export default function HeroB({ data, cta, header }) {
           {/* Subheadline */}
           <p
             data-hb="sub"
-            className="mt-6 max-w-[520px] text-balance text-[0.98rem] font-normal leading-[1.65] text-[rgba(255,244,234,0.82)] md:text-[1.06rem]"
+            className="mt-6 max-w-[520px] text-balance text-[0.98rem] font-normal leading-[1.65] text-[rgba(255,244,234,0.82)] md:max-w-[760px] md:text-[1.06rem]"
           >
-            {data.subtitle}
+            {renderHighlightedSubtitle(data.subtitle)}
           </p>
 
           {/* Support text — narrower max-w prevents orphaned last word */}
           <p
             data-hb="sup"
-            className="mt-4 max-w-[400px] text-[0.88rem] font-semibold leading-[1.5] text-[var(--red-bright)] md:text-[0.95rem]"
+            className="mt-4 max-w-[320px] text-balance text-[0.88rem] font-semibold leading-[1.5] text-[var(--red-bright)] md:max-w-[400px] md:text-[0.95rem]"
           >
             {data.supportText}
           </p>
@@ -334,7 +358,7 @@ export default function HeroB({ data, cta, header }) {
         {/* ── Right column: vertical video card ── */}
         <div
           data-hb="video-card"
-          className="w-full max-w-[380px] flex-shrink-0 sm:max-w-[440px] lg:w-[505px] lg:max-w-none xl:w-[570px]"
+          className="w-full max-w-none flex-shrink-0 md:max-w-[440px] lg:w-[505px] lg:max-w-none xl:w-[570px]"
         >
           <div
             className="relative overflow-hidden rounded-[24px] bg-[#050202]"

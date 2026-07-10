@@ -151,11 +151,11 @@ export default function TestimonialCarousel({ data, ui = {}, cta }) {
                     {item.quote}
                   </p>
                   <div className="mt-6 border-t border-[var(--line)] pt-4">
-                    <div className="flex items-center justify-between gap-3">
-                      <p className="font-heading text-sm font-bold uppercase tracking-[0.1em] text-white">
+                    <div className="relative">
+                      <p className="px-10 text-center font-heading text-sm font-bold uppercase tracking-[0.1em] text-white">
                         {item.name}
                       </p>
-                      <div className="flex items-center gap-0.5" aria-label="Calificacion 5 de 5">
+                      <div className="absolute right-0 top-1/2 flex -translate-y-1/2 items-center gap-0.5" aria-label="Calificacion 5 de 5">
                         {Array.from({ length: 5 }).map((_, starIndex) => (
                           <Star
                             key={starIndex}
