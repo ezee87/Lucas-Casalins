@@ -1,8 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import SectionLabel from "../ui/SectionLabel";
 import { ScrollTrigger } from "../../lib/gsap";
+import useGhlLeadCapture from "../../hooks/useGhlLeadCapture";
 
 export default function BookingSection({ data }) {
+  const calendarIframeRef = useRef(null);
+  useGhlLeadCapture(calendarIframeRef);
+
   // Load the GoHighLevel embed script once
   useEffect(() => {
     if (document.querySelector(`script[src="${data.calendarEmbedScript}"]`)) return;
@@ -11,9 +15,6 @@ export default function BookingSection({ data }) {
     script.type = "text/javascript";
     script.async = true;
     document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
   }, [data.calendarEmbedScript]);
 
   return (
@@ -46,6 +47,7 @@ export default function BookingSection({ data }) {
             className="relative max-h-[78vh] overflow-y-auto rounded-[1.2rem] border border-[var(--line)] bg-[var(--surface)]"
           >
             <iframe
+              ref={calendarIframeRef}
               src={data.calendarEmbedUrl}
               id={data.calendarEmbedId}
               title={data.title}
