@@ -125,6 +125,8 @@ export default function AboutLucas({ data, cta }) {
                 src={data.image}
                 alt="Lucas Casalins"
                 className="h-full w-full object-cover object-[center_20%] lg:object-top"
+                width="1170"
+                height="2532"
                 loading="lazy"
                 decoding="async"
               />
@@ -204,6 +206,8 @@ export default function AboutLucas({ data, cta }) {
                 src={data.image}
                 alt="Lucas Casalins"
                 className="h-full w-full scale-[1.03] object-cover object-[center_26%]"
+                width="1170"
+                height="2532"
                 loading="lazy"
                 decoding="async"
               />

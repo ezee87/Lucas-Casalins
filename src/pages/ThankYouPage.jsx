@@ -173,7 +173,8 @@ export default function ThankYouPage() {
               src={landingCopy.header.logo}
               alt={landingCopy.header.logoAlt}
               className="mx-auto h-10 w-auto object-contain md:h-12"
-              fetchPriority="high"
+              width="500"
+              height="500"
               decoding="async"
             />
           </header>
@@ -239,6 +240,8 @@ export default function ThankYouPage() {
                       src={thankYouCopy.stepOne.poster}
                       alt={thankYouCopy.stepOne.posterAlt}
                       className="h-full w-full object-cover"
+                      width="1672"
+                      height="941"
                       loading="lazy"
                       decoding="async"
                     />

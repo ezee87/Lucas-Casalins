@@ -51,6 +51,7 @@ export default function BookingSection({ data }) {
               src={data.calendarEmbedUrl}
               id={data.calendarEmbedId}
               title={data.title}
+              loading="lazy"
               style={{ width: "100%", border: "none", overflow: "hidden" }}
               scrolling="yes"
               className="h-[980px] w-full md:h-[1080px]"

@@ -74,6 +74,8 @@ export default function AboutLucasA({ data, cta }) {
                 src={data.image}
                 alt="Lucas Casalins"
                 className="h-full w-full object-cover object-top"
+                width="1170"
+                height="2532"
                 style={{ aspectRatio: "4 / 5" }}
                 loading="lazy"
                 decoding="async"

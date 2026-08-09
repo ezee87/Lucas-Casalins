@@ -300,7 +300,8 @@ export default function HeroA({ data, cta, header }) {
           src={header?.logo || data.logo}
           alt={header?.logoAlt || "ARETÉ"}
           className="h-10 w-auto object-contain md:h-12"
-          fetchPriority="high"
+          width="500"
+          height="500"
           decoding="async"
         />
       </header>
@@ -386,6 +387,9 @@ export default function HeroA({ data, cta, header }) {
                     src={data.video.poster}
                     alt={data.video.posterAlt || data.title}
                     className="h-full w-full object-contain"
+                    width="1672"
+                    height="941"
+                    loading="eager"
                     fetchPriority="high"
                     decoding="async"
                     onLoad={() => ScrollTrigger.refresh()}

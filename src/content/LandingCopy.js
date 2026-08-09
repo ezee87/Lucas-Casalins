@@ -70,7 +70,7 @@ export const landingCopy = {
       // play, so there is no autoplay on page load.
       embedUrl:
         "https://fast.wistia.net/embed/iframe/f9hw92egpw?autoplay=1&playerColor=ff1e1e",
-      poster: "/assets/lucas/portada.png",
+      poster: "/assets/lucas/portada.webp",
       posterAlt: "Lucas Casalins — video de presentación del Programa ARETÉ",
     },
     proofStrip: [
@@ -249,7 +249,7 @@ export const landingCopy = {
   about: {
     eyebrow: "Conocé a Lucas Casalins",
     title: "¿QUIÉN ES LUCAS CASALINS?",
-    image: "/assets/lucas/lucas-2.PNG",
+    image: "/assets/lucas/lucas-2.webp",
     bullets: [
       "Mi nombre es Lucas Casalins, soy Profesor de Educación Física, Licenciado en Alto Rendimiento Deportivo y atleta con más de 20 torneos regionales, nacionales e internacionales, incluyendo el 1er puesto en un Campeonato Sudamericano (NPC), un Campeonato Argentino (NPC), y un Campeonato Cordobés (NPC).",
       "Además de competir, me formé con más de 65 certificaciones nacionales e internacionales en nutrición, entrenamiento y biomecánica, y soy parte de la cátedra de Biomecánica en la Facultad de Educación Física, lo que me permite unir la ciencia con la práctica real.",

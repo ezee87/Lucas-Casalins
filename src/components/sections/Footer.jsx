@@ -47,6 +47,8 @@ export default function Footer({ data, ui = {} }) {
             src={data.logo}
             alt={ui.logoAlt || "ARETÉ"}
             className="h-9 w-auto object-contain opacity-75"
+            width="500"
+            height="500"
             loading="lazy"
             decoding="async"
           />

@@ -27,7 +27,7 @@ export const thankYouCopy = {
     videoUrl:
       "https://assets.cdn.filesafe.space/3J3keJSBC03nDUTbNzzx/media/68de741e065f2874eb964027.mp4",
     videoType: "mp4",
-    poster: "/assets/lucas/portada.png",
+    poster: "/assets/lucas/portada.webp",
     posterAlt: "Lucas Casalins - video de preparacion para la llamada",
     playLabel: "Reproducir video",
   },

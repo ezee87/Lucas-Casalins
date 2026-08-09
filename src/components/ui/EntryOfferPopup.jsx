@@ -216,6 +216,9 @@ export default function EntryOfferPopup({ data }) {
               src={data.image}
               alt={data.imageAlt}
               className="absolute inset-0 h-full w-full object-cover object-top"
+              width="1800"
+              height="2000"
+              loading="lazy"
               decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#070303] via-transparent to-transparent" />
