@@ -167,7 +167,7 @@ export default function ThankYouPage() {
   return (
     <SmoothScrollProvider>
       <PageShell>
-        <main ref={ref} className="relative overflow-hidden pb-12 pt-4 md:pb-16 md:pt-7">
+        <main ref={ref} className="relative overflow-hidden pb-12 pt-3 md:pb-16 md:pt-3">
           <header className="mx-auto w-full max-w-[1180px] px-4 sm:px-5 md:px-8">
             <img
               src={landingCopy.header.logo}
@@ -179,43 +179,43 @@ export default function ThankYouPage() {
             />
           </header>
 
-          <div data-ty-topline className="mx-auto mt-6 w-full max-w-[1180px] px-4 text-center sm:px-5 md:mt-7 md:px-8">
+          <div data-ty-topline className="mx-auto mt-3.5 w-full max-w-[1180px] px-4 text-center sm:px-5 md:mt-3.5 md:px-8">
             <p className="inline-flex items-center justify-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-white/95 md:text-[0.74rem]">
               {thankYouCopy.labels.topStepsTitle}
             </p>
           </div>
 
-          <section className="mx-auto mt-5 w-full max-w-[1180px] px-4 sm:px-5 md:mt-7 md:px-8">
+          <section className="mx-auto mt-3.5 w-full max-w-[1180px] px-4 sm:px-5 md:mt-4 md:px-8">
             <div
               data-ty-hero
-              className="card-border-trace relative overflow-hidden rounded-3xl border border-[var(--line)] bg-[rgba(8,8,8,0.86)] px-5 py-6 text-center md:px-8 md:py-9"
+              className="card-border-trace relative overflow-hidden rounded-3xl border border-[var(--line)] bg-[rgba(8,8,8,0.86)] px-5 py-5 text-center md:px-8 md:py-6"
             >
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_0%,rgba(255,30,30,0.14),transparent_70%)]" />
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.08),rgba(0,0,0,0.46))]" />
 
-              <SectionLabel className="relative z-[1] mb-4 justify-center">{thankYouCopy.labels.confirmation}</SectionLabel>
+              <SectionLabel className="relative z-[1] mb-2.5 justify-center">{thankYouCopy.labels.confirmation}</SectionLabel>
 
               <h1 className="relative z-[1] flex items-center justify-center gap-2 text-center font-display text-[clamp(1.55rem,5.8vw,3rem)] uppercase leading-[0.92] tracking-[0.01em] text-white">
                 {thankYouCopy.hero.alertTitle}
               </h1>
 
-              <p className="relative z-[1] mx-auto mt-4 max-w-4xl text-[0.95rem] leading-[1.58] text-[rgba(255,244,234,0.9)] md:text-[1.02rem]">
+              <p className="relative z-[1] mx-auto mt-2.5 max-w-4xl text-[0.95rem] leading-[1.58] text-[rgba(255,244,234,0.9)] md:text-[1.02rem]">
                 <HighlightMandatory text={thankYouCopy.hero.mainText} />
               </p>
 
-              <p className="relative z-[1] mt-4 inline-flex rounded-lg border border-[rgba(255,30,30,0.28)] bg-[rgba(255,30,30,0.08)] px-4 py-2 text-[0.86rem] font-semibold uppercase tracking-[0.06em] text-[var(--red-bright)] md:text-[0.9rem]">
+              <p className="relative z-[1] mt-2.5 inline-flex rounded-lg border border-[rgba(255,30,30,0.28)] bg-[rgba(255,30,30,0.08)] px-4 py-2 text-[0.86rem] font-semibold uppercase tracking-[0.06em] text-[var(--red-bright)] md:text-[0.9rem]">
                 {thankYouCopy.hero.important}
               </p>
             </div>
           </section>
 
-          <div data-ty-steps-wrap className="mx-auto mt-7 w-full max-w-[1180px] px-4 sm:px-5 md:mt-9 md:px-8">
+          <div data-ty-steps-wrap className="mx-auto mt-4 w-full max-w-[1180px] px-4 sm:px-5 md:mt-4 md:px-8">
             <section data-ty-step className="thankyou-step-section text-center">
-              <div className="thankyou-step-divider" aria-hidden="true" />
+              <div className="thankyou-step-divider thankyou-step-divider--first" aria-hidden="true" />
               <div className="flex justify-center">
                 <StepTitle text={thankYouCopy.stepOne.title} />
               </div>
-              <div className="thankyou-video-card card-border-trace mx-auto max-w-[920px] overflow-hidden rounded-3xl border border-[var(--line)] bg-[rgba(8,8,8,0.88)] p-2 md:p-3">
+              <div className="thankyou-video-card thankyou-video-card--first card-border-trace mx-auto max-w-[920px] overflow-hidden rounded-3xl border border-[var(--line)] bg-[rgba(8,8,8,0.88)] p-2 md:p-3">
                 {stepOneReady ? (
                   <video
                     controls

@@ -754,6 +754,15 @@ body {
   margin-top: 28px;
 }
 
+.thankyou-step-divider--first {
+  margin-top: 28px;
+  margin-bottom: 18px;
+}
+
+.thankyou-video-card--first {
+  margin-top: 16px;
+}
+
 .thankyou-checklist-section {
   margin-bottom: 84px;
 }
@@ -821,5 +830,14 @@ body {
 
   .thankyou-video-card {
     margin-top: 22px;
+  }
+
+  .thankyou-step-divider--first {
+    margin-top: 32px;
+    margin-bottom: 18px;
+  }
+
+  .thankyou-video-card--first {
+    margin-top: 16px;
   }
 }
