@@ -9,8 +9,11 @@ import AboutLucas from "./components/sections/AboutLucas";
 import BookingSection from "./components/sections/BookingSection";
 import FAQSection from "./components/sections/FAQSection";
 import Footer from "./components/sections/Footer";
+import { useLandingVariant } from "./hooks/useLandingVariant";
 
 function App() {
+  const landingVariant = useLandingVariant();
+
   useEffect(() => {
     document.title = landingCopy.meta.title;
     const meta = document.querySelector('meta[name="description"]');
@@ -24,7 +27,11 @@ function App() {
       <PageShell>
         <main>
           <Hero data={landingCopy.hero} cta={landingCopy.cta} header={landingCopy.header} />
-          <BookingSection data={landingCopy.booking} cta={landingCopy.cta} />
+          <BookingSection
+            data={landingCopy.booking}
+            cta={landingCopy.cta}
+            landingVariant={landingVariant}
+          />
           <SuccessCases data={landingCopy.successCases} cta={landingCopy.cta} />
           <TestimonialCarousel data={landingCopy.testimonials} ui={landingCopy.ui} cta={landingCopy.cta} />
           <AboutLucas data={landingCopy.about} cta={landingCopy.cta} />

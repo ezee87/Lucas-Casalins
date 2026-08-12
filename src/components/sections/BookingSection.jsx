@@ -1,11 +1,16 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import SectionLabel from "../ui/SectionLabel";
 import { ScrollTrigger } from "../../lib/gsap";
 import useGhlLeadCapture from "../../hooks/useGhlLeadCapture";
 
-export default function BookingSection({ data }) {
+export default function BookingSection({ data, landingVariant }) {
   const calendarIframeRef = useRef(null);
   useGhlLeadCapture(calendarIframeRef);
+  const calendarEmbedUrl = useMemo(() => {
+    const url = new URL(data.calendarEmbedUrl);
+    url.searchParams.set("landing_variant", landingVariant);
+    return url.toString();
+  }, [data.calendarEmbedUrl, landingVariant]);
 
   // Load the GoHighLevel embed script once
   useEffect(() => {
@@ -48,7 +53,7 @@ export default function BookingSection({ data }) {
           >
             <iframe
               ref={calendarIframeRef}
-              src={data.calendarEmbedUrl}
+              src={calendarEmbedUrl}
               id={data.calendarEmbedId}
               title={data.title}
               loading="lazy"
