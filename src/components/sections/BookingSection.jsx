@@ -1,16 +1,25 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import SectionLabel from "../ui/SectionLabel";
 import { ScrollTrigger } from "../../lib/gsap";
 import useGhlLeadCapture from "../../hooks/useGhlLeadCapture";
 
 export default function BookingSection({ data, landingVariant }) {
   const calendarIframeRef = useRef(null);
+  const [showCalendarFallback, setShowCalendarFallback] = useState(false);
   useGhlLeadCapture(calendarIframeRef);
   const calendarEmbedUrl = useMemo(() => {
     const url = new URL(data.calendarEmbedUrl);
     url.searchParams.set("landing_variant", landingVariant);
     return url.toString();
   }, [data.calendarEmbedUrl, landingVariant]);
+
+  useEffect(() => {
+    const fallbackTimer = window.setTimeout(() => {
+      setShowCalendarFallback(true);
+    }, 6000);
+
+    return () => window.clearTimeout(fallbackTimer);
+  }, [calendarEmbedUrl]);
 
   // Load the GoHighLevel embed script once
   useEffect(() => {
@@ -49,20 +58,36 @@ export default function BookingSection({ data, landingVariant }) {
           <div className="bg-dots-red pointer-events-none absolute inset-0 opacity-30" />
           <div
             id="booking-embed"
-            className="relative max-h-[78vh] overflow-y-auto rounded-[1.2rem] border border-[var(--line)] bg-[var(--surface)]"
+            className="relative h-[78vh] min-h-[720px] overflow-y-auto rounded-[1.2rem] border border-[var(--line)] bg-[var(--surface)] md:min-h-[780px]"
           >
             <iframe
               ref={calendarIframeRef}
               src={calendarEmbedUrl}
               id={data.calendarEmbedId}
               title={data.title}
-              loading="lazy"
-              style={{ width: "100%", border: "none", overflow: "hidden" }}
-              scrolling="yes"
-              className="h-[980px] w-full md:h-[1080px]"
-              onLoad={() => ScrollTrigger.refresh()}
+              loading="eager"
+              style={{ width: "100%", border: "none" }}
+              scrolling="auto"
+              className="min-h-[980px] w-full md:min-h-[1080px]"
+              onLoad={() => {
+                ScrollTrigger.refresh();
+              }}
             />
+
           </div>
+
+          {showCalendarFallback && (
+            <div className="relative z-10 flex justify-center px-3 py-3">
+              <a
+                href={calendarEmbedUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-[var(--line-warm)] bg-[#120909]/95 px-4 py-2 text-center text-xs font-semibold text-[var(--text)] shadow-lg transition-colors hover:border-[var(--red)] hover:text-white"
+              >
+                Abrir calendario en una nueva pestaña
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </section>
