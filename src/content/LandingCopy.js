@@ -269,10 +269,6 @@ export const landingCopy = {
     emailLabel: "Correo electrónico *",
     duration: "1 hr",
     durationNote: "Consulta inicial sin cargo",
-    calendarEmbedUrl:
-      "https://links.iqautomated.io/widget/booking/hKx898rnz0pwlufZXQuQ",
-    calendarEmbedId: "hKx898rnz0pwlufZXQuQ_1782073144314",
-    calendarEmbedScript: "https://links.iqautomated.io/js/form_embed.js",
   },
   faq: {
     eyebrow: "¿TENÉS ALGUNAS DUDAS?",

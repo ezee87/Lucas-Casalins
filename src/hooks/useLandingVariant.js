@@ -21,7 +21,6 @@ function getInitialVariant() {
 const landingVariant = getInitialVariant();
 
 if (import.meta.env.DEV) {
-  console.log(`[A/B] Landing variant: ${landingVariant}`);
   document.documentElement.setAttribute("data-variant", landingVariant);
 }
 

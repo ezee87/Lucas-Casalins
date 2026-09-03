@@ -634,6 +634,17 @@ body {
     margin-right: auto;
   }
 
+  #booking .booking-content,
+  #booking .booking-content p,
+  #booking .booking-summary,
+  #booking .booking-summary p,
+  #booking .booking-summary small,
+  #booking .booking-summary strong {
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   #booking .inline-flex,
   #cases .inline-flex,
   #testimonials .inline-flex,
